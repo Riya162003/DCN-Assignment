@@ -1,0 +1,7 @@
+﻿Sec. 2.4
+ARQ: Retransmission Strategies
+Figure 2.33 ARPANET ARQ. (a) Eight multiplexed. stop-and-wait virtual channels. (b) Bits in the header for ARQ control. (c) Operation of multiplexed stop and wait for two virtual channels. Top-to-bottom frames show SN and the channel number, and bottom-to-top frames show RN for both channels. The third frame from bottom to top acks packet on the A channel.
+
+time-outs.) When an ack is received for a frame on a given virtual channel, that virtual channel becomes idle and can accept a new packet from the higher layer.
+Somewhat more overhead is required here than in the basic stop-and-wait protocol. In particular, each frame carries both the virtual channel number (requiring three bits) and the sequence number modulo 2 (ie., one bit) of the packet on that virtual channel. The acknowledgment information is piggybacked onto the frames going in the opposite direction. Each such frame, in fact, carries information for all eight virtual channels. In particular, an eight-bit field in the header of each return frame gives the number modulo 2 of the awaited packet for each virtual channel.
+One of the desirable features of this strategy is that the ack information is repeated so often (ie, for all virtual channels in each return frame) that relatively few retrans- missions are required because of transmission errors in the reverse direction. Typically, only one retransmission is required for each frame in error in the forward direction. The
